@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vivienda en Alicante: qué pasa, qué se pide y qué se ha aprobado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #FCFCFA;
+  --ink: #222326;
+  --muted: #5E6268;
+  --line: #DCDDD8;
+  --link: #1A5CA8;
+  --sign: #FF7A1A;
+  --mark: rgba(255, 122, 26, 0.38);
+  --grey-bar: #BFC2BC;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17181B;
+    --ink: #E6E7E9;
+    --muted: #A3A8AF;
+    --line: #34373D;
+    --link: #8DBBF2;
+    --mark: rgba(255, 122, 26, 0.45);
+    --grey-bar: #555A62;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #17181B;
+  --ink: #E6E7E9;
+  --muted: #A3A8AF;
+  --line: #34373D;
+  --link: #8DBBF2;
+  --mark: rgba(255, 122, 26, 0.45);
+  --grey-bar: #555A62;
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1.0625rem/1.62 "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap { max-width: 40rem; margin: 0 auto; padding: 0 1.25rem; }
+a { color: var(--link); text-underline-offset: 0.15em; }
+:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
+h1, h2 { font-family: "Archivo", "Helvetica Neue", Arial, sans-serif; font-weight: 800; line-height: 1.15; }
+h1 { font-size: clamp(2rem, 7vw, 2.6rem); margin: 2rem 0 0.4rem; }
+h2 { font-size: clamp(1.4rem, 5vw, 1.7rem); margin: 3rem 0 0.8rem; }
+h3 { font-size: 1.1rem; margin: 1.6rem 0 0.4rem; }
+p { margin: 0 0 0.9rem; }
+ul, ol { padding-left: 1.25rem; margin: 0 0 1rem; }
+li { margin-bottom: 0.4rem; }
+mark { background: linear-gradient(transparent 52%, var(--mark) 52%); color: inherit; padding: 0 0.1em; }
+.small { font-size: 0.92rem; }
+.muted { color: var(--muted); }
+.src { font-size: 0.87rem; color: var(--muted); }
+.src a { color: inherit; }
+
+/* El cartel */
+.sign {
+  display: inline-block;
+  background: var(--sign);
+  color: #000;
+  padding: 0.9rem 1.2rem 1rem;
+  margin: 1.6rem 0 0 0.2rem;
+  transform: rotate(-2deg);
+  box-shadow: 1px 2px 0 rgba(0,0,0,0.2);
+  max-width: 100%;
+}
+.sign .big {
+  display: block;
+  font-family: "Archivo", "Arial Narrow", Impact, sans-serif;
+  font-stretch: 66%;
+  font-weight: 900;
+  font-size: clamp(3rem, 16vw, 4.8rem);
+  line-height: 0.9;
+}
+.sign .tel {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: "Archivo", "Arial Narrow", sans-serif;
+  font-stretch: 85%;
+  font-weight: 700;
+  font-size: 1.15rem;
+  border-bottom: 2px solid #000;
+}
+.intro { font-size: 1.12rem; }
+.jump { margin-top: 1.2rem; font-size: 0.95rem; }
+.jump a { display: inline-block; margin: 0 0.9rem 0.35rem 0; }
+
+/* Gráficos sencillos */
+.chart { margin: 1.2rem 0 1.6rem; }
+.chart h3 { margin-top: 0; }
+.row { display: grid; grid-template-columns: 8.2rem 1fr; gap: 0.6rem; align-items: center; margin-bottom: 0.5rem; }
+.row .lab { font-size: 0.93rem; line-height: 1.25; }
+.row .bar { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 0.95rem; white-space: nowrap; }
+.row .bar::before { content: ""; display: block; height: 1.25rem; width: calc(var(--v) * 0.72%); background: var(--sign); }
+.row .bar.grey::before { background: var(--grey-bar); }
+@media (max-width: 380px) { .row { grid-template-columns: 6.8rem 1fr; } }
+
+/* Casillas */
+.check { list-style: none; padding: 0; }
+.check li { position: relative; padding-left: 1.75rem; }
+.check li::before {
+  content: ""; position: absolute; left: 0; top: 0.28rem;
+  width: 1rem; height: 1rem; border: 2px solid var(--ink);
+}
+.check li.done::before { content: "✓"; font-size: 0.85rem; line-height: 0.85rem; text-align: center; font-weight: 700; }
+.supplies { columns: 2 12rem; column-gap: 1.5rem; }
+.supplies li { break-inside: avoid; }
+
+/* Tabla */
+.table-wrap { overflow-x: auto; margin: 0 0 1rem; }
+table { border-collapse: collapse; width: 100%; font-size: 0.97rem; }
+th, td { text-align: left; vertical-align: top; padding: 0.65rem 0.6rem 0.65rem 0; border-bottom: 1px solid var(--line); }
+th { font-size: 0.9rem; color: var(--muted); font-weight: 700; border-bottom: 2px solid var(--ink); }
+td:first-child { font-weight: 700; width: 38%; padding-right: 0.9rem; }
+
+/* Cronología */
+.dates { list-style: none; padding: 0; }
+.dates li { margin-bottom: 0.7rem; }
+
+/* Glosario */
+dl { margin: 0 0 1rem; }
+dt { font-weight: 700; margin-top: 0.9rem; }
+dd { margin: 0.15rem 0 0; }
+
+details { border-bottom: 1px solid var(--line); padding: 0.7rem 0; }
+details:first-of-type { border-top: 1px solid var(--line); }
+summary { cursor: pointer; font-weight: 700; }
+details p { margin: 0.5rem 0 0.2rem; }
+
+footer { margin-top: 3rem; padding: 1.4rem 0 3rem; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="sign" role="img" aria-label="Cartel de se alquila: habitación, 362 euros al mes">
+    <span class="big" aria-hidden="true">SE ALQUILA</span>
+    <span class="tel" aria-hidden="true">Habitación. 362 €/mes</span>
+  </div>
+
+  <h1>Vivienda en Alicante</h1>
+  <p class="intro">Qué está pasando con los alquileres, qué pide la acampada de la Montañeta y qué ha aprobado el Gobierno.</p>
+  <p class="small muted">Página del punto de información que hemos montado en el instituto. Última actualización: 7 de octubre de 2026. Lo de los decretos cambia casi cada día.</p>
+
+  <p class="jump">
+    <a href="#acampada">La acampada</a>
+    <a href="#datos">Los precios</a>
+    <a href="#decretos">Los decretos</a>
+    <a href="#comparacion">¿Recogen lo que se pide?</a>
+    <a href="#cronologia">Fechas</a>
+    <a href="#posturas">Qué dice cada uno</a>
+    <a href="#preguntas">Dudas</a>
+    <a href="#glosario">Palabras</a>
+    <a href="#colaborar">Qué traer</a>
+    <a href="#ayuda">Si hay un problema de vivienda</a>
+    <a href="#fuentes">Fuentes</a>
+  </p>
+</header>
+
+<main>
+
+<section id="acampada">
+  <h2>¿Qué pasa en la Montañeta?</h2>
+  <p>Desde el sábado 3 de octubre hay una acampada por el derecho a la vivienda en la plaza de la Montañeta, delante de la Subdelegación del Gobierno. Con ella, Alicante se sumó a las acampadas que ya había en otras ciudades.</p>
+  <p>La convocan el Sindicat de Vivenda de Carolines y el Sindicat de Vivenda Zona Nord, dos organizaciones de inquilinos y gente afectada por problemas de vivienda que forman parte del Sindicato de Inquilinas. Se organiza en asambleas y tiene una cocina colectiva.</p>
+
+  <h3>Qué piden los sindicatos</h3>
+  <ul>
+    <li>Parar los desahucios sin alternativa digna.</li>
+    <li>Bajar los alquileres hasta un máximo del 30 % del salario mínimo.</li>
+    <li>Contratos de alquiler indefinidos, con renovación automática.</li>
+    <li>Expropiar los pisos en manos de fondos, inmobiliarias y viviendas turísticas.</li>
+    <li>Ampliar la vivienda pública y repartirla de forma transparente.</li>
+  </ul>
+  <p>Antes de la votación del 2 de octubre, su portavoz dijo que los decretos del Gobierno eran un parche: pueden frenar algún desahucio concreto, pero muchos casos de Alicante se quedan fuera.</p>
+  <p class="src">Fuente: <a href="https://www.elespanol.com/alicante/20261002/alicante-suma-acampadas-denuncia-derechos-parche-sanchez-huelga-general/1003744405964_0.html" target="_blank" rel="noopener">El Español, 2 de octubre de 2026</a>.</p>
+  <p>Si quieres seguirlos: <a href="https://www.instagram.com/sindicatvivendacarolines/" target="_blank" rel="noopener">Carolines en Instagram</a> (también en <a href="https://x.com/SindiCarolines" target="_blank" rel="noopener">X</a>) y <a href="https://www.instagram.com/sindicatvivendazonanord/" target="_blank" rel="noopener">Zona Nord en Instagram</a>.</p>
+</section>
+
+<section id="datos">
+  <h2>¿Cuánto cuesta vivir de alquiler aquí?</h2>
+  <p>En la provincia, el alquiler ha subido <mark>un 7,1 % en un año</mark> y está en su precio más alto hasta ahora.</p>
+
+  <div class="chart">
+    <h3>Euros por metro cuadrado al mes</h3>
+    <div class="row"><span class="lab">Provincia de Alicante</span><span class="bar" style="--v:84">12,7 €</span></div>
+    <div class="row"><span class="lab">Alicante capital</span><span class="bar" style="--v:92">13,9 €</span></div>
+    <div class="row"><span class="lab">Media de España</span><span class="bar grey" style="--v:100">15,1 €</span></div>
+    <p class="src">Fuente: <a href="https://www.idealista.com/news/etiquetas/indice-precios-alquiler-idealista" target="_blank" rel="noopener">informes de precios de idealista</a>, septiembre de 2026.</p>
+  </div>
+
+  <p>Una habitación en Alicante cuesta <mark>362 € al mes</mark> de media, un 89 % más que hace cinco años.</p>
+  <div class="chart">
+    <h3>Precio medio de una habitación</h3>
+    <div class="row"><span class="lab">Alicante, 2021 (aprox.)</span><span class="bar" style="--v:44">190 €</span></div>
+    <div class="row"><span class="lab">Alicante, 2026</span><span class="bar" style="--v:84">362 €</span></div>
+    <div class="row"><span class="lab">Media de España, 2026</span><span class="bar grey" style="--v:100">430 €</span></div>
+    <p class="src">2026 es el primer trimestre. Fuente: informe de LIVE4LIFE, empresa de alquiler de habitaciones para estudiantes, en <a href="https://alicanteplaza.es/alicanteplaza/alicante/el-alquiler-ya-supera-los-1000-euros-en-alicante-y-los-360-por-habitacion-en-la-capital" target="_blank" rel="noopener">Alicante Plaza</a>.</p>
+  </div>
+
+  <p>Los hogares de la provincia gastan de media <mark>el 28,4 % de lo que ingresan</mark> en pagar el alquiler.</p>
+  <p class="src">Fuente: datos del Banco de España citados por COAPI Alicante, en <a href="https://inmodiario.com/203/87105/el-alquiler-en-alicante-supera-el-esfuerzo-financiero-de-las-familias/" target="_blank" rel="noopener">Inmodiario</a>.</p>
+
+  <p>Y un joven que cobra unos 1.170 € netos al mes se deja <mark>el 32 % del sueldo</mark> solo en una habitación.</p>
+  <p class="src">Fuente: Pisos.com, con datos del Consejo de la Juventud de España, en <a href="https://www.todoalicante.es/economia/jovenes-alicante-destinan-sueldo-pagar-alquiler-habitacion-20260418124320-nt.html" target="_blank" rel="noopener">TodoAlicante</a>.</p>
+
+  <p><b>Ojo con estas cifras.</b> Alicante está por debajo de la media de España, tanto por metro cuadrado como por habitación, porque Madrid, Barcelona o Baleares tiran mucho de la media hacia arriba. El problema aquí es lo rápido que sube y lo que pesa en el sueldo de cada casa. Además, algunas fuentes son parte interesada (portales inmobiliarios, agentes de la propiedad, empresas de alquiler), y por eso ponemos siempre de dónde sale cada dato.</p>
+</section>
+
+<section id="decretos">
+  <h2>¿Qué ha aprobado el Gobierno?</h2>
+  <p>El 6 de octubre el Gobierno volvió a aprobar dos decretos de vivienda que el Congreso había tumbado cuatro días antes. Como las Cortes están disueltas por las elecciones del 29 de noviembre, ahora los tiene que validar la Diputación Permanente del Congreso. A 7 de octubre todavía no se sabe cuándo será esa votación.</p>
+
+  <h3>Primer decreto: desahucios y contratos</h3>
+  <ul class="check">
+    <li class="done">Aprobado por el Gobierno el 6 de octubre</li>
+    <li>Validado por la Diputación Permanente (todavía sin fecha; tiene el apoyo del PNV)</li>
+  </ul>
+  <p>Qué incluye:</p>
+  <ul>
+    <li>Suspende determinados desahucios de personas vulnerables sin alternativa de vivienda hasta el 31 de diciembre de 2030.</li>
+    <li>Permite prorrogar dos años los contratos que terminen antes del 31 de diciembre de 2028, si el inquilino lo pide y está al corriente de pago.</li>
+    <li>Limita algunas subidas de la renta y regula el alquiler de temporada y por habitaciones.</li>
+    <li>Frena la compra especulativa de vivienda por fondos hasta 2028, por ejemplo comprar por debajo del 70 % del valor de mercado.</li>
+    <li>Incluye ayudas a inquilinos y ventajas fiscales para pequeños propietarios. Según fuentes del Ministerio de Vivienda, las administraciones asumirán posibles costas procesales e intereses en el caso de los pequeños propietarios.</li>
+    <li>Añade un fondo de 10.000 millones de euros del ICO en préstamos sin intereses para comprar la primera vivienda.</li>
+  </ul>
+
+  <h3>Segundo decreto: renovación automática</h3>
+  <ul class="check">
+    <li class="done">Aprobado por el Gobierno el 6 de octubre</li>
+    <li>Validado por la Diputación Permanente (todavía sin fecha; el PNV tiene reparos)</li>
+  </ul>
+  <p>Qué incluye:</p>
+  <ul>
+    <li>Los contratos de alquiler se renovarían solos por cinco años, o siete si el propietario es una empresa, salvo que alguien avise de que no quiere seguir: el propietario con seis meses de antelación y el inquilino con dos.</li>
+    <li>Solo entrará en vigor si se valida, y es el que más difícil lo tiene.</li>
+  </ul>
+  <p class="src">Fuentes: <a href="https://www.newtral.es/reales-decretos-vivienda-diputacion-permanente/20261006/" target="_blank" rel="noopener">Newtral</a>, <a href="https://www.publico.es/politica/gobierno/sanchez-anuncia-nueva-aprobacion-decretos-vivienda-gobierno-tira-toalla-deja-tirada-gente.html" target="_blank" rel="noopener">Público</a>, <a href="https://www.infobae.com/espana/2026/10/06/pedro-sanchez-aprueba-los-dos-decretos-de-vivienda-para-convalidarlos-en-la-comision-permanente-del-congreso-donde-no-necesita-el-voto-de-junts-no-tiramos-la-toalla/" target="_blank" rel="noopener">Infobae</a> y <a href="https://es.euronews.com/2026/10/06/gobierno-rescata-decretos-ley-vivienda-plan-10000-millones-primera-compra" target="_blank" rel="noopener">Euronews</a>, 6 de octubre de 2026.</p>
+</section>
+
+<section id="comparacion">
+  <h2>¿Recogen los decretos lo que piden los sindicatos?</h2>
+  <p>Solo en parte. Así queda punto por punto, suponiendo que los decretos se validen:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">Lo que piden</th><th scope="col">Lo que dicen los decretos</th></tr></thead>
+      <tbody>
+        <tr><td>Parar los desahucios sin alternativa</td><td><b>En parte.</b> Se suspenden determinados desahucios de personas vulnerables hasta 2030, no todos.</td></tr>
+        <tr><td>Alquiler máximo del 30 % del salario mínimo</td><td><b>No.</b> No hay tope de precio. Hay límites a algunas subidas, que frenan aumentos pero no bajan lo que ya se paga.</td></tr>
+        <tr><td>Contratos indefinidos</td><td><b>En parte, y está en el aire.</b> La renovación automática es por bloques de cinco o siete años, no indefinida, y va en el decreto que más difícil tiene salir adelante.</td></tr>
+        <tr><td>Expropiar pisos de fondos y viviendas turísticas</td><td><b>No.</b> Se frenan las compras especulativas nuevas hasta 2028, pero no se toca lo que ya tienen.</td></tr>
+        <tr><td>Más vivienda pública</td><td><b>Casi no.</b> Los 10.000 millones son para ayudar a comprar, no para construir vivienda pública. El propio presidente del Gobierno reconoció que eso exige años de construcción.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="cronologia">
+  <h2>Cómo hemos llegado aquí</h2>
+  <ul class="dates">
+    <li><b>29 de septiembre.</b> El Gobierno aprueba dos decretos de vivienda.</li>
+    <li><b>2 de octubre.</b> El Congreso los tumba con los votos en contra de PP, Vox, Junts y UPN: el primero por 178 votos a 172 y el segundo por 184 a 166. Dejan de estar en vigor.</li>
+    <li><b>3 de octubre.</b> Manifestación en Alicante y comienza la acampada en la Montañeta.</li>
+    <li><b>6 de octubre.</b> El Gobierno vuelve a aprobar los dos decretos, con algunos cambios, y los manda a la Diputación Permanente.</li>
+    <li><b>29 de noviembre.</b> Elecciones generales.</li>
+  </ul>
+  <p class="src">Fuentes: <a href="https://www.euribor.com.es/2026/10/03/congreso-deroga-los-decretos-de-vivienda-con-el-no-de-junts-pp/" target="_blank" rel="noopener">Euribor.com.es</a> (votación del 2 de octubre) e <a href="https://www.infobae.com/espana/2026/10/05/el-gobierno-aprobara-de-nuevo-en-el-consejo-de-ministros-los-decretos-de-vivienda-que-rechazo-el-congreso-para-intentar-convalidarlos-en-la-diputacion-permanente/" target="_blank" rel="noopener">Infobae</a> (elecciones y Diputación Permanente).</p>
+</section>
+
+<section id="posturas">
+  <h2>Qué dice cada uno</h2>
+  <p>Para hacerse una opinión hay que escuchar a todas las partes. Esto es lo que argumenta cada una.</p>
+
+  <h3>Los que votaron en contra</h3>
+  <p>PP y Vox creen que la intervención del Gobierno es contraproducente: dicen que reduce la oferta de vivienda, penaliza la propiedad privada y crea inseguridad jurídica.</p>
+  <p>Junts acusó al Gobierno de crear falsas esperanzas con unos decretos que, según ellos, no frenan la especulación, perjudican a los pequeños propietarios y reducen la oferta de alquiler. Pide incentivos fiscales para los propietarios y más garantías frente a impagos y ocupaciones.</p>
+  <p>Algunas organizaciones empresariales catalanas, como Pimec o Foment del Treball, pidieron más seguridad jurídica y que aumente de verdad la oferta, y defendieron a los pequeños propietarios que alquilan un piso para completar su pensión.</p>
+
+  <h3>Los que los defienden</h3>
+  <p>El Gobierno dice que es urgente intervenir el mercado de la vivienda para proteger a quien está en riesgo de perder su casa.</p>
+  <p>Algunos expertos, como el urbanista José Manuel López, creen que las medidas dan estabilidad a propietarios e inquilinos porque limitan la especulación, y que también benefician al propietario que no especula.</p>
+
+  <h3>Los que piden más</h3>
+  <p>Los sindicatos de vivienda creen que los decretos se quedan cortos y reclaman las medidas de <a href="#acampada">su lista</a>.</p>
+
+  <p><b>Y entre economistas tampoco hay acuerdo.</b> Varios estudios dicen que los topes de precio ayudan a quien ya vive de alquiler pero reducen la oferta. Otros defienden que unos topes moderados, que no se apliquen a la vivienda nueva, funcionan mejor que los controles duros.</p>
+  <p class="src">Fuentes: <a href="https://www.mundiario.com/articulo/opiniones/junts-inflige-golpe-letal-legislatura-tumbar-decretos-vivienda-dejar-gobierno-mayoria/20261002215141444668.html" target="_blank" rel="noopener">Mundiario</a> (posturas de PP, Vox y Junts; artículo de opinión), <a href="https://www.infobae.com/espana/2026/10/05/criticas-a-junts-tras-el-reves-a-los-decretos-de-vivienda-sus-votantes-no-solo-son-caseros-sino-tambien-inquilinos-y-sobre-todo-gente-sensata/" target="_blank" rel="noopener">Infobae</a> (Junts y José Manuel López) y <a href="https://www.eldiario.es/catalunya/paso-junts-pactar-decreto-vivienda-tumbarlo_129_13557863.html" target="_blank" rel="noopener">elDiario.es</a> (organizaciones empresariales).</p>
+</section>
+
+<section id="preguntas">
+  <h2>Dudas típicas</h2>
+  <details>
+    <summary>¿Por qué sube tanto el alquiler?</summary>
+    <p>Hay varias causas y no hay acuerdo sobre cuánto pesa cada una. Hay más gente buscando que pisos disponibles y, en zonas como el Centro o la Playa de San Juan, el alquiler normal compite con el vacacional. Sin topes, cada contrato nuevo se firma al precio que marque el mercado.</p>
+  </details>
+  <details>
+    <summary>Si Alicante está por debajo de la media, ¿dónde está el problema?</summary>
+    <p>La media de España la suben mucho las ciudades más caras. Aquí el problema es la velocidad: una habitación casi ha doblado su precio en cinco años, y los sueldos no han subido igual.</p>
+  </details>
+  <details>
+    <summary>¿Esto es de algún partido?</summary>
+    <p>No. El punto de información lo hemos montado alumnos del instituto, de forma voluntaria y sin ningún partido detrás. Contamos lo que piden los sindicatos, lo que ha aprobado el Gobierno y lo que dicen quienes se oponen, cada cosa con su fuente.</p>
+  </details>
+  <details>
+    <summary>¿Qué cambia para mí o para mi familia?</summary>
+    <p>Si los decretos se validan y vivís de alquiler, un contrato que termine antes de 2029 podría prorrogarse dos años si el inquilino lo pide y está al día con el pago. También cambiarían las reglas del alquiler de temporada y por habitaciones. Cada caso es distinto y esto no es asesoramiento legal.</p>
+  </details>
+  <details>
+    <summary>¿Por qué vota la Diputación Permanente y no todo el Congreso?</summary>
+    <p>Porque las Cortes están disueltas hasta las elecciones del 29 de noviembre. Mientras tanto, la Diputación Permanente, un grupo reducido de diputados, es la que valida los decretos-ley.</p>
+  </details>
+</section>
+
+<section id="glosario">
+  <h2>Palabras que salen mucho</h2>
+  <dl>
+    <dt>Desahucio</dt>
+    <dd>Cuando un juez ordena que alguien deje la vivienda en la que vive, por ejemplo por no pagar o porque se ha acabado el contrato. El día en que se ejecuta se llama lanzamiento.</dd>
+    <dt>Sindicato de vivienda</dt>
+    <dd>Organización de inquilinos y gente con problemas de vivienda. Funciona como un sindicato de trabajadores, pero para la vivienda: asesora, negocia y se moviliza.</dd>
+    <dt>Gran tenedor</dt>
+    <dd>Quien tiene muchas viviendas. La Ley de Vivienda de 2023 lo fija, en general, en más de diez. No es el pequeño propietario que alquila un piso.</dd>
+    <dt>Fondo buitre</dt>
+    <dd>Forma coloquial de llamar a los fondos que compran vivienda para sacar un beneficio rápido. El decreto los define por cómo compran (por debajo del precio de mercado o en paquetes), no por el tipo de empresa.</dd>
+    <dt>Zona tensionada</dt>
+    <dd>Zona donde el alquiler es muy caro en relación con lo que gana la gente. La declara la comunidad autónoma y permite limitar los precios.</dd>
+    <dt>Decreto-ley</dt>
+    <dd>Norma que aprueba el Gobierno por urgencia. Entra en vigor enseguida, pero el Congreso la tiene que validar (convalidar). Si no lo hace, deja de valer.</dd>
+    <dt>Prórroga</dt>
+    <dd>Alargar un contrato de alquiler más allá de la fecha en que acababa, con las mismas condiciones.</dd>
+  </dl>
+</section>
+
+<section id="colaborar">
+  <h2>¿Quieres traer algo?</h2>
+  <p>Esto es lo que nos han pedido desde la acampada:</p>
+  <ul class="check supplies">
+    <li>Bolsas de basura</li>
+    <li>Frutos secos, snacks y galletas, envasados y sin abrir</li>
+    <li>Cinta aislante, cinta americana y bridas</li>
+    <li>Cubiertos, platos y vasos de plástico desechables</li>
+    <li>Agua embotellada</li>
+    <li>Papel higiénico y papel absorbente</li>
+    <li>Gel hidroalcohólico</li>
+    <li>Lonas, mantas y cosas para el frío y la lluvia</li>
+  </ul>
+  <p>Si no sabes si algo sirve, pregúntanos en el punto de información.</p>
+  <p>Estamos en el hall durante los patios, de lunes a viernes. Si cambia algo, lo pondremos aquí. Lo que se recoja lo llevamos a la acampada fuera del horario de clase, de forma voluntaria.</p>
+</section>
+
+<section id="ayuda">
+  <h2>Si tú o alguien que conoces tiene un problema con la vivienda</h2>
+  <p>Si en tu casa, o alguien que conoces, tiene un aviso de desahucio o un problema con el alquiler, mejor no dejarlo pasar. Se puede acudir a:</p>
+  <ul>
+    <li>Los servicios sociales del Ayuntamiento. Pueden valorar la situación y hacer un informe de vulnerabilidad, que puede ser importante en un proceso de desahucio.</li>
+    <li>La asistencia jurídica gratuita. Si los ingresos de la familia son bajos, se puede pedir un abogado de oficio.</li>
+    <li>Los sindicatos de vivienda, que asesoran y acompañan a gente en esta situación. Sus contactos están <a href="#acampada">arriba</a>.</li>
+  </ul>
+  <p>Si es otra persona, puedes pasarle esta página o acompañarla a pedir ayuda, pero la decisión es suya.</p>
+  <p class="small muted">Esta página no da asesoramiento legal. Cada caso es distinto.</p>
+</section>
+
+<section id="fuentes">
+  <h2>Fuentes</h2>
+  <h3>Precios</h3>
+  <ul class="small">
+    <li><a href="https://www.idealista.com/news/etiquetas/indice-precios-alquiler-idealista" target="_blank" rel="noopener">idealista: informes de precios del alquiler</a></li>
+    <li><a href="https://inmodiario.com/203/87105/el-alquiler-en-alicante-supera-el-esfuerzo-financiero-de-las-familias/" target="_blank" rel="noopener">Inmodiario: el alquiler en Alicante supera el esfuerzo financiero de las familias (COAPI Alicante, Banco de España)</a></li>
+    <li><a href="https://alicanteplaza.es/alicanteplaza/alicante/el-alquiler-ya-supera-los-1000-euros-en-alicante-y-los-360-por-habitacion-en-la-capital" target="_blank" rel="noopener">Alicante Plaza: el precio de las habitaciones (informe de LIVE4LIFE)</a></li>
+    <li><a href="https://www.todoalicante.es/economia/jovenes-alicante-destinan-sueldo-pagar-alquiler-habitacion-20260418124320-nt.html" target="_blank" rel="noopener">TodoAlicante: los jóvenes y el alquiler de habitaciones (Pisos.com)</a></li>
+  </ul>
+  <h3>Decretos y votaciones</h3>
+  <ul class="small">
+    <li><a href="https://www.idealista.com/news/finanzas/economia/2026/09/29/916383-el-gobierno-acuerda-proteger-los-desahucios-hasta-2030-y-prohibir-la-compra-por-fondos" target="_blank" rel="noopener">idealista/news: los decretos del 29 de septiembre</a></li>
+    <li><a href="https://www.eldiario.es/economia/nuevo-decreto-vivienda-aprobado-gobierno_1_13546389.html" target="_blank" rel="noopener">elDiario.es: las medidas de los decretos</a></li>
+    <li><a href="https://www.euribor.com.es/2026/10/03/congreso-deroga-los-decretos-de-vivienda-con-el-no-de-junts-pp/" target="_blank" rel="noopener">Euribor.com.es: el Congreso deroga los decretos</a></li>
+    <li><a href="https://www.infobae.com/espana/2026/10/05/el-gobierno-aprobara-de-nuevo-en-el-consejo-de-ministros-los-decretos-de-vivienda-que-rechazo-el-congreso-para-intentar-convalidarlos-en-la-diputacion-permanente/" target="_blank" rel="noopener">Infobae: el Gobierno volverá a aprobar los decretos</a></li>
+    <li><a href="https://www.newtral.es/reales-decretos-vivienda-diputacion-permanente/20261006/" target="_blank" rel="noopener">Newtral: las medidas de los nuevos decretos</a></li>
+    <li><a href="https://www.publico.es/politica/gobierno/sanchez-anuncia-nueva-aprobacion-decretos-vivienda-gobierno-tira-toalla-deja-tirada-gente.html" target="_blank" rel="noopener">Público: nueva aprobación de los decretos</a></li>
+    <li><a href="https://www.infobae.com/espana/2026/10/06/pedro-sanchez-aprueba-los-dos-decretos-de-vivienda-para-convalidarlos-en-la-comision-permanente-del-congreso-donde-no-necesita-el-voto-de-junts-no-tiramos-la-toalla/" target="_blank" rel="noopener">Infobae: los decretos irán a la Diputación Permanente</a></li>
+    <li><a href="https://es.euronews.com/2026/10/06/gobierno-rescata-decretos-ley-vivienda-plan-10000-millones-primera-compra" target="_blank" rel="noopener">Euronews: el plan de 10.000 millones para la primera compra</a></li>
+  </ul>
+  <h3>Acampada y posturas</h3>
+  <ul class="small">
+    <li><a href="https://www.elespanol.com/alicante/20261002/alicante-suma-acampadas-denuncia-derechos-parche-sanchez-huelga-general/1003744405964_0.html" target="_blank" rel="noopener">El Español: Alicante se suma a las acampadas</a></li>
+    <li><a href="https://www.mundiario.com/articulo/opiniones/junts-inflige-golpe-letal-legislatura-tumbar-decretos-vivienda-dejar-gobierno-mayoria/20261002215141444668.html" target="_blank" rel="noopener">Mundiario (opinión): las posturas de PP, Vox y Junts</a></li>
+    <li><a href="https://www.infobae.com/espana/2026/10/05/criticas-a-junts-tras-el-reves-a-los-decretos-de-vivienda-sus-votantes-no-solo-son-caseros-sino-tambien-inquilinos-y-sobre-todo-gente-sensata/" target="_blank" rel="noopener">Infobae: críticas y defensas tras el rechazo</a></li>
+    <li><a href="https://www.eldiario.es/catalunya/paso-junts-pactar-decreto-vivienda-tumbarlo_129_13557863.html" target="_blank" rel="noopener">elDiario.es: por qué Junts cambió de postura</a></li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="small muted">
+  <p>Esta página la hemos hecho alumnos del instituto, de forma voluntaria y sin ningún partido ni sindicato detrás. Si ves algún error, dínoslo en el punto de información y lo cambiamos.</p>
+  <p><b>Sobre el uso de inteligencia artificial.</b> Para preparar esta página hemos usado IA (Claude, de Anthropic) para buscar información, resumir noticias, redactar los textos y montar la página. Todos los datos y sus fuentes se han comprobado antes de publicarlos: cada cifra está contrastada con la fuente que la acompaña. Las dudas típicas y las definiciones son explicaciones generales, no datos. Lo que se publica lo decidimos nosotros.</p>
+  <p>Última actualización: 7 de octubre de 2026.</p>
+</footer>
+
+</div>
+</body>
+</html>
